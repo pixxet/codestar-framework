@@ -1,186 +1,251 @@
+/* line 4, ../scss/cs-framework-rtl.scss */
 .cs-framework {
   margin-left: 20px;
   margin-right: 0;
 }
+/* line 9, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-header h1 {
   float: right;
 }
+/* line 13, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-header fieldset {
   float: left;
 }
+/* line 18, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-nav {
   float: right;
 }
+/* line 21, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-nav ul {
   clear: right;
 }
+/* line 25, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-nav ul li .cs-section-active:after {
   right: auto;
   left: 0;
   border-left-color: #fff;
   border-right-color: transparent;
 }
+/* line 32, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-nav ul li .cs-arrow:after {
   content: "\f053";
   right: auto;
   left: 10px;
 }
+/* line 38, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-nav ul li.cs-tab-active .cs-arrow:after {
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
+/* line 45, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-nav ul ul li a {
   padding-right: 25px;
   padding-left: 15px;
 }
+/* line 51, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-nav ul ul:before {
   left: auto;
   right: 15px;
 }
+/* line 58, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-nav .cs-icon {
   margin-left: 5px;
   margin-right: 0;
 }
-.cs-framework .cs-nav-background {
+/* line 64, ../scss/cs-framework-rtl.scss */
+.cs-framework .cs-nav_background {
   left: auto;
   right: 0;
 }
+/* line 69, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-content {
   margin-left: 0;
   margin-right: 225px;
 }
+/* line 73, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-content .cs-sections {
   float: right;
 }
+/* line 78, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-show-all .cs-content {
   margin-right: 0;
   overflow: hidden;
 }
+/* line 83, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-expand-all {
   right: auto;
   left: 40px;
 }
+/* line 88, ../scss/cs-framework-rtl.scss */
 .cs-framework .cs-footer {
   text-align: left;
 }
 
+/* line 93, ../scss/cs-framework-rtl.scss */
 .cs-metabox-framework {
   margin: -6px -12px -12px -12px;
 }
+/* line 97, ../scss/cs-framework-rtl.scss */
 .cs-metabox-framework .cs-content .cs-section-title {
   padding: 20px;
 }
 
+/* line 104, ../scss/cs-framework-rtl.scss */
 .cs-element .cs-title {
   float: right;
 }
+/* line 108, ../scss/cs-framework-rtl.scss */
 .cs-element .cs-fieldset {
   margin-left: 0;
   margin-right: 30%;
 }
 
+/* line 114, ../scss/cs-framework-rtl.scss */
 .cs-pseudo-field {
   padding: 0 0 0 5px !important;
 }
 
+/* line 118, ../scss/cs-framework-rtl.scss */
 .cs-field-number em {
   margin-left: 0;
   margin-right: 5px;
 }
 
+/* line 123, ../scss/cs-framework-rtl.scss */
 .cs-field-typography select,
 .cs-field-typography .chosen-container {
   margin-right: 0;
   margin-left: 5px;
 }
 
+/* line 129, ../scss/cs-framework-rtl.scss */
 .cs-field-checkbox .horizontal li,
 .cs-field-radio .horizontal li {
   margin-right: 0;
   margin-left: 15px;
 }
 
+/* line 136, ../scss/cs-framework-rtl.scss */
 .cs-field-switcher label {
   float: right;
 }
+/* line 140, ../scss/cs-framework-rtl.scss */
 .cs-field-switcher .cs-text-desc {
   float: right;
   margin-left: 0;
   margin-right: 5px;
 }
 
+/* line 148, ../scss/cs-framework-rtl.scss */
 .cs-field-color_picker .cs-alpha-slider {
   margin-left: 0;
   margin-right: 2px;
 }
+/* line 152, ../scss/cs-framework-rtl.scss */
 .cs-field-color_picker .cs-alpha-slider .ui-slider-handle {
   margin: 0 -11px;
 }
+/* line 157, ../scss/cs-framework-rtl.scss */
 .cs-field-color_picker .cs-alpha-slider-offset {
   background-position: center right;
 }
+/* line 161, ../scss/cs-framework-rtl.scss */
 .cs-field-color_picker .cs-alpha-text {
   right: auto;
   left: 10px;
 }
 
+/* line 168, ../scss/cs-framework-rtl.scss */
 .cs-field-group .ui-accordion-icons {
   padding-left: 0;
   padding-right: 30px;
 }
+/* line 173, ../scss/cs-framework-rtl.scss */
 .cs-field-group .ui-accordion-header-icon {
   left: auto;
   right: .5em;
 }
+/* line 178, ../scss/cs-framework-rtl.scss */
 .cs-field-group .dashicons-arrow-right:before {
   content: "\f141";
 }
 
+/* line 183, ../scss/cs-framework-rtl.scss */
 .cs-help {
   right: auto;
   left: 5px;
 }
 
+/* line 189, ../scss/cs-framework-rtl.scss */
 .cs-field-icon .button {
   margin-right: 0;
   margin-left: 5px;
 }
+/* line 194, ../scss/cs-framework-rtl.scss */
 .cs-field-icon .cs-icon-preview i {
   margin-right: 0;
   margin-left: 5px;
 }
 
+/* line 201, ../scss/cs-framework-rtl.scss */
 .cs-field-gallery ul li {
   margin-right: 0;
   margin-left: 5px;
 }
+/* line 206, ../scss/cs-framework-rtl.scss */
 .cs-field-gallery .button {
   margin-right: 0;
   margin-left: 5px;
 }
 
+/* line 212, ../scss/cs-framework-rtl.scss */
 .cs-field-sorter .cs-modules {
   float: right;
   margin-right: 0;
   margin-left: 10px;
 }
 
+/* line 220, ../scss/cs-framework-rtl.scss */
+.cs-taxonomy-add-fields .cs-fieldset {
+  margin-right: 0;
+}
+/* line 224, ../scss/cs-framework-rtl.scss */
+.cs-taxonomy-add-fields .cs-help {
+  left: -5px;
+  right: auto;
+}
+
+/* line 232, ../scss/cs-framework-rtl.scss */
+.cs-taxonomy-edit-fields .cs-fieldset {
+  margin-left: 0;
+  margin-right: 225px;
+}
+/* line 237, ../scss/cs-framework-rtl.scss */
+.cs-taxonomy-edit-fields .cs-help {
+  right: auto;
+  left: -5px;
+}
+
+/* line 243, ../scss/cs-framework-rtl.scss */
 #cs-save-ajax {
   right: auto;
   left: 5px;
 }
 
+/* line 249, ../scss/cs-framework-rtl.scss */
 .cs-dialog .cs-element {
   padding-right: 15px;
   padding-left: 30px;
 }
+/* line 254, ../scss/cs-framework-rtl.scss */
 .cs-dialog .cs-shortcode-clone .cs-remove-clone {
   right: auto;
   left: 5px;
 }
 
+/* line 260, ../scss/cs-framework-rtl.scss */
 #customize-controls .cs-element .cs-fieldset,
 .widget-content .cs-element .cs-fieldset,
 #side-sortables .cs-element .cs-fieldset {
@@ -188,16 +253,21 @@
 }
 
 @media only screen and (max-width: 1200px) {
+  /* line 267, ../scss/cs-framework-rtl.scss */
   .cs-metabox-framework .cs-element .cs-fieldset {
     margin-left: 0;
   }
 }
 @media only screen and (max-width: 782px) {
+  /* line 273, ../scss/cs-framework-rtl.scss */
   .cs-framework .cs-fieldset,
   .cs-framework .cs-content {
     margin-right: 0;
   }
 }
+/* line 279, ../scss/cs-framework-rtl.scss */
 .ui-dialog {
   right: auto;
 }
+
+/*# sourceMappingURL=cs-framework-rtl.css.map */

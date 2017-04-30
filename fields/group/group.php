@@ -53,11 +53,13 @@ class CSFramework_Option_group extends CSFramework_Options {
 
           $title = ( isset( $this->value[$key][$field_id] ) ) ? $this->value[$key][$field_id] : '';
 
-          if ( is_array( $title ) && isset( $this->multilang ) ) {
+          if ( is_array( $title ) && isset( $this->multilang ) && $this->multilang === true ) {
             $lang  = cs_language_defaults();
             $title = $title[$lang['current']];
             $title = is_array( $title ) ? $title[0] : $title;
           }
+
+          $title = is_array( $title ) ? array_values($title)[0] : $title;
 
           $field_title = ( ! empty( $search_id ) ) ? $acc_title : $field_title;
 
@@ -69,7 +71,8 @@ class CSFramework_Option_group extends CSFramework_Options {
             $field['sub'] = true;
             $unique = $this->unique . '[' . $this->field['id'] . ']['.$key.']';
             $value  = ( isset( $field['id'] ) && isset( $this->value[$key][$field['id']] ) ) ? $this->value[$key][$field['id']] : '';
-            echo cs_add_element( $field, $value, $unique );
+
+            echo cs_add_element( $this->unique_dependency($field, $key), $value, $unique );
           }
 
           echo '<div class="cs-element cs-text-right"><a href="#" class="button cs-warning-primary cs-remove-group">'. __( 'Remove', 'cs-framework' ) .'</a></div>';
@@ -86,6 +89,26 @@ class CSFramework_Option_group extends CSFramework_Options {
 
     echo $this->element_after();
 
+  }
+
+  private function unique_dependency($field, $unique_id)
+  {
+    return $this->find_matches($field, $unique_id);
+  }
+
+  private function find_matches($array, $unique_id) {
+
+      $new_arr = array();
+
+      foreach ($array as $key => $value) {
+        if (is_array($value)) {
+          $new_arr[$key] = $this->find_matches($value, $unique_id);
+        } else {
+          $new_arr[$key] = sprintf($array[$key], $unique_id);
+        }
+      }
+
+      return $new_arr;
   }
 
 }

@@ -24,10 +24,10 @@ if ( ! function_exists( 'cs_add_element' ) ) {
       $hidden  = ' hidden';
       $depend .= ' data-'. $sub .'controller="'. $field['dependency'][0] .'"';
       $depend .= ' data-'. $sub .'condition="'. $field['dependency'][1] .'"';
-      $depend .= " data-". $sub ."value='". $field['dependency'][2] ."'";
+      $depend .= ' data-'. $sub .'value="'. $field['dependency'][2] .'"';
     }
 
-    $output .= '<div class="cs-element cs-field-'. $field['type'] . $is_pseudo . $wrap_class . $hidden .'"'. $depend .'>';
+    $output .= '<div id="'.$field['id'].'" class="cs-element cs-field-'. $field['type'] . $is_pseudo . $wrap_class . $hidden .'"'. $depend .'>';
 
     if( isset( $field['title'] ) ) {
       $field_desc = ( isset( $field['desc'] ) ) ? '<p class="cs-text-desc">'. $field['desc'] .'</p>' : '';
@@ -161,6 +161,54 @@ if ( ! function_exists( 'cs_array_search' ) ) {
     }
 
     return $results;
+
+  }
+}
+
+/**
+ *
+ * Getting POST Var
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ *
+ */
+if ( ! function_exists( 'cs_get_var' ) ) {
+  function cs_get_var( $var, $default = '' ) {
+
+    if( isset( $_POST[$var] ) ) {
+      return $_POST[$var];
+    }
+
+    if( isset( $_GET[$var] ) ) {
+      return $_GET[$var];
+    }
+
+    return $default;
+
+  }
+}
+
+/**
+ *
+ * Getting POST Vars
+ *
+ * @since 1.0.0
+ * @version 1.0.0
+ *
+ */
+if ( ! function_exists( 'cs_get_vars' ) ) {
+  function cs_get_vars( $var, $depth, $default = '' ) {
+
+    if( isset( $_POST[$var][$depth] ) ) {
+      return $_POST[$var][$depth];
+    }
+
+    if( isset( $_GET[$var][$depth] ) ) {
+      return $_GET[$var][$depth];
+    }
+
+    return $default;
 
   }
 }

@@ -2,3 +2,8 @@
 @import "vendor/mixins";
 @import "vendor/chosen";
 @import "vendor/base";
+
+
+$fa-font-path: "../../../fonts/font-awesome";
+$fa-css-prefix: "fa";
+@import "../../../sass/font-awesome/font-awesome";

@@ -19,7 +19,7 @@ if( ! function_exists( 'cs_admin_enqueue_scripts' ) ) {
 
     // framework core styles
     wp_enqueue_style( 'cs-framework', CS_URI .'/assets/css/cs-framework.css', array(), '1.0.0', 'all' );
-    wp_enqueue_style( 'font-awesome', CS_URI .'/assets/css/font-awesome.css', array(), '4.2.0', 'all' );
+    //wp_enqueue_style( 'font-awesome', CS_URI .'/assets/css/font-awesome.css', array(), '4.2.0', 'all' );
 
     if ( is_rtl() ) {
       wp_enqueue_style( 'cs-framework-rtl', CS_URI .'/assets/css/cs-framework-rtl.css', array(), '1.0.0', 'all' );
@@ -34,6 +34,8 @@ if( ! function_exists( 'cs_admin_enqueue_scripts' ) ) {
     // framework core scripts
     wp_enqueue_script( 'cs-plugins',    CS_URI .'/assets/js/cs-plugins.js',    array(), '1.0.0', true );
     wp_enqueue_script( 'cs-framework',  CS_URI .'/assets/js/cs-framework.js',  array( 'cs-plugins' ), '1.0.0', true );
+
+    wp_localize_script( 'cs-framework', 'settings', array('CS_ICONS_PREFIX' => CS_ICONS_PREFIX) );
 
   }
   add_action( 'admin_enqueue_scripts', 'cs_admin_enqueue_scripts' );

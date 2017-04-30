@@ -9,7 +9,7 @@ $options              = array();
 // -----------------------------------------
 // Customize Core Fields                   -
 // -----------------------------------------
-$options[]            = array(
+/*$options[]            = array(
   'name'              => 'wp_core_fields',
   'title'             => 'WP Core Fields',
   'settings'          => array(
@@ -36,7 +36,7 @@ $options[]            = array(
     // text with default
     array(
       'name'          => 'text_option_with_default',
-      'default'       => 'bla bla bla',
+      'default'       => '',
       'control'       => array(
         'label'       => 'Text with Default',
         'type'        => 'text',
@@ -459,5 +459,5 @@ $options[]            = array(
   // end: sections
 
 );
-
+*/
 CSFramework_Customize::instance( $options );

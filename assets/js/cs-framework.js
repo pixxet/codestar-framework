@@ -59,7 +59,8 @@
       $expand.on('click', function (e) {
         e.preventDefault();
         $this.find('.cs-body').toggleClass('cs-show-all');
-        $(this).find('.fa').toggleClass('fa-eye-slash' ).toggleClass('fa-eye');
+        $(this).find('.'+settings.CS_ICONS_PREFIX).toggleClass(settings.CS_ICONS_PREFIX+'-eye-slash' ).toggleClass(settings.CS_ICONS_PREFIX+'-eye');
+        //$(this).find('.fa').toggleClass('fa-eye-slash' ).toggleClass('fa-eye');
       });
 
     });
@@ -333,7 +334,13 @@
         wp_media_frame.on( 'select', function() {
 
           var attachment = wp_media_frame.state().get('selection').first().attributes;
-          var thumbnail  = ( typeof attachment.sizes.thumbnail !== 'undefined' ) ? attachment.sizes.thumbnail.url : attachment.url;
+
+          
+          if ( typeof attachment.sizes !== 'undefined' ) {
+            var thumbnail  = ( typeof attachment.sizes.thumbnail !== 'undefined' ) ? attachment.sizes.thumbnail.url : attachment.url;
+          } else {
+            var thumbnail  = ( typeof attachment.url !== 'undefined' ) ? attachment.url : attachment.icon;
+          }
 
           $preview.removeClass('hidden');
           $img.attr('src', thumbnail);
@@ -527,6 +534,7 @@
             'activeHeader': 'dashicons dashicons-arrow-down'
           },
           beforeActivate: function( event, ui ) {
+            $(ui.newPanel).CSFRAMEWORK_DEPENDENCY();
             $(ui.newPanel).CSFRAMEWORK_DEPENDENCY( 'sub' );
           }
         });
@@ -556,9 +564,13 @@
 
         e.preventDefault();
 
+        var gp_id; // group_id
+        
+
         clone_group.find('input, select, textarea').each( function () {
           this.name = this.name.replace(/\[(\d+)\]/,function(string, id) {
-            return '[' + (parseInt(id,10)+1) + ']';
+            gp_id = (parseInt(id,10)+1);
+            return '[' + gp_id + ']';
           });
         });
 
@@ -570,11 +582,28 @@
           field_groups.accordion({ active: cloned.index() });
         }
 
+        cloned.find('*[data-depend-id]').each( function () {
+          $(this).attr('data-depend-id', $(this).attr('data-depend-id').replace(/\%s/, gp_id));
+        });
+
+        cloned.find('*[data-controller]').each( function () {
+          $(this).attr('data-controller', $(this).attr('data-controller').replace(/\%s/, gp_id));
+        });
+
+        cloned.find('*[data-sub-depend-id]').each( function () {
+          $(this).attr('data-sub-depend-id', $(this).attr('data-sub-depend-id').replace(/\%s/, gp_id));
+        });
+
+        cloned.find('*[data-sub-controller]').each( function () {
+          $(this).attr('data-sub-controller', $(this).attr('data-sub-controller').replace(/\%s/, gp_id));
+        });
+
         field_groups.find('input, select, textarea').each( function () {
           this.name = this.name.replace('[_nonce]', '');
         });
 
         // run all field plugins
+        cloned.CSFRAMEWORK_DEPENDENCY();
         cloned.CSFRAMEWORK_DEPENDENCY( 'sub' );
         cloned.CSFRAMEWORK_RELOAD_PLUGINS();
 
@@ -945,7 +974,7 @@
             $('[' + ruleAttr + ']', '.cs-dialog-load .cs-element:not(.hidden)').each( function() {
               var _this_main = $(this), _this_main_atts = _this_main.data('atts');
 
-              console.log(_this_main_atts);
+              //console.log(_this_main_atts);
               send_to_shortcode += base.validate_atts( _this_main_atts, _this_main );  // validate empty atts
             });
 
@@ -1341,6 +1370,20 @@
   };
 
   // ======================================================
+  // BUTTON SET
+  // ------------------------------------------------------
+  $.fn.CSFRAMEWORK_BUTTON_SET = function() {
+    return this.each(function() {
+      var button_set = $(this);
+      button_set.delegate('button.button', 'click', function() {
+        button_set.find('.button-primary').removeClass('button-primary').addClass('button-default');
+        $(this).removeClass('button-default').addClass('button-primary');
+        button_set.find('input').val($(this).attr('data-value')).trigger('change');
+      });
+    });
+  };
+
+  // ======================================================
   // TOOLTIP HELPER
   // ------------------------------------------------------
   $.fn.CSFRAMEWORK_TOOLTIP = function() {
@@ -1363,6 +1406,7 @@
       $('.cs-field-upload', this).CSFRAMEWORK_UPLOADER();
       $('.cs-field-typography', this).CSFRAMEWORK_TYPOGRAPHY();
       $('.cs-field-color-picker', this).CSFRAMEWORK_COLORPICKER();
+      $('.cs-field-button_set', this).CSFRAMEWORK_BUTTON_SET();
       $('.cs-help', this).CSFRAMEWORK_TOOLTIP();
     });
   };
@@ -1373,7 +1417,7 @@
   $(document).ready( function() {
     $('.cs-framework').CSFRAMEWORK_TAB_NAVIGATION();
     $('.cs-reset-confirm, .cs-import-backup').CSFRAMEWORK_CONFIRM();
-    $('.cs-content, .wp-customizer, .widget-content').CSFRAMEWORK_DEPENDENCY();
+    $('.cs-content, .wp-customizer, .widget-content, .cs-taxonomy').CSFRAMEWORK_DEPENDENCY();
     $('.cs-field-group').CSFRAMEWORK_GROUP();
     $('.cs-save').CSFRAMEWORK_SAVE();
     $cs_body.CSFRAMEWORK_RELOAD_PLUGINS();
